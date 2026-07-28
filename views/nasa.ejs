@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <%- include('partials/head.ejs') %>
+</head>
+<body>
+    <main>
+        <h1>The Solar System</h1>
+        <%- include('partials/nav.ejs') %>
+        <h2> NASA Picture of The Day </h2>
+        <%=nasaPOD.description%>
+        
+        <div id="media">
+
+        </div>
+
+        <script>
+            console.log("<%=nasaPOD.mediaURL%>");
+            let source = "<%=nasaPOD.mediaURL%>";
+            if("<%=nasaPOD.mediaType%>" == "video"){
+                let vid = document.createElement("video");
+                vid.src = source;
+                vid.controls = true;
+                document.querySelector("#media").appendChild(vid);
+            }
+            else if("<%=nasaPOD.mediaType%>" == "image"){
+                let img = document.createElement("img");
+                img.src = source;
+                document.querySelector("#media").appendChild(img);
+            }
+        </script>
+    </main>
+    <%- include('partials/footer.ejs') %>
+</body>
+</html>
